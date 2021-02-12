@@ -2,9 +2,9 @@ class CreateBoards < ActiveRecord::Migration[6.1]
   def change
     create_table :boards do |t|
       t.string :board_name
-      t.string :starting_board
-      t.string :solved_board
-      t.string :board_in_progress
+      t.integer :starting_board, array: true
+      t.integer :solved_board, array: true
+      t.integer :board_in_progress, array: true
       t.boolean :solved, default: false
 
       t.timestamps
