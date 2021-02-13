@@ -24,7 +24,7 @@ seed_board = [
     [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
     [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ] ]
 
-dannys_board = Board.create( board_name: "Test board", starting_board: seed_board, board_in_progress: seed_board, solved_board: seed_solution )
+dannys_board = Board.create( board_name: "Test board", starting_board: seed_board, board_in_progress: seed_board, solved_board: seed_solution)
 
 UserBoard.create( user: danny, board: dannys_board )
 
