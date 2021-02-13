@@ -16,12 +16,13 @@ class Board < ApplicationRecord
 
     def initialize( *arguments )
         super( *arguments )
-        random_board = @@basic_puzzle.clone
-        20.times{ shuffle( random_board ) }
-        poke_holes_in_random_board = poke( random_board, 64 )
-        self.solved_board = random_board
-        self.starting_board = poke_holes_in_random_board
-        self.board_in_progress = poke_holes_in_random_board
+        @random_board = @@basic_puzzle.clone
+        20.times{ shuffle( @random_board ) }
+        @poke_holes_in_random_board = poke( @random_board, 20 )
+        binding.pry
+        self.solved_board = @random_board
+        self.starting_board = @poke_holes_in_random_board
+        self.board_in_progress = @poke_holes_in_random_board
         self.save
     end
 
@@ -44,5 +45,70 @@ class Board < ApplicationRecord
             row[ thisIndex ], row[ thatIndex ] = row[ thatIndex ], row[ thisIndex ]
         end
     end
+
+
+    def solve (puzzle_array)
+        empty_cell = find_next_empty_cell(puzzle_array)
+        return true if !empty_cell #If no empty cells, we are done. Return the solved puzzle
+
+        # Fill in the empty cell
+        (1..9).to_a.each do |num|
+            if safe(puzzle_array, empty_cell, num)
+                puzzle_array[empty_cell[:row_i]][empty_cell[:col_i]] = num
+                return puzzle_array if solve(puzzle_array)
+            end
+            # puzzle_array[empty_cell[:row_i]][empty_cell[:col_i]] = 0
+        end
+        return false
+    end
+
+    def find_next_empty_cell(puzzle_array)
+        # Find the coordinates of the next unsolved cell
+        empty_cell = {row_i:"",col_i:""}
+        puzzle_array.each_with_index do |row, row_index|
+            row.each_with_index do |column, col_index|
+                if column == 0 
+                    empty_cell[:row_i], empty_cell[:col_i] = row_index, col_index  
+                    break
+                end   
+            end   
+            break if !(empty_cell[:row_i] == "") && !(empty_cell[:col_i] == "")
+        end
+        !(empty_cell[:col_i] == "") ? empty_cell : false
+    end
+
+    def safe(puzzle_array, empty_cell, num)
+        row_safe(puzzle_array, empty_cell, num) && 
+        col_safe(puzzle_array, empty_cell, num) && 
+        box_safe(puzzle_array, empty_cell, num)
+    end
+
+    def row_safe (puzzle_array, empty_cell, num)
+        return false if puzzle_array[ empty_cell[:row_i] ].find_index(num)
+        return true
+    end
+
+    def col_safe (puzzle_array, empty_cell, num)
+        return false if puzzle_array.any?{|row| row[ empty_cell[:col_i] ] == num}
+        return true
+    end
+
+    def box_safe (puzzle_array, empty_cell, num)
+        box_start_row = (empty_cell[:row_i] - (empty_cell[:row_i] % 3)) #==> 3
+        box_start_col = (empty_cell[:col_i] - (empty_cell[:col_i] % 3)) #=> 3
+
+        (0..2).to_a.each do |box_row|
+            (0..2).to_a.each do |box_col|
+                return false if puzzle_array[box_start_row + box_row][box_start_col + box_col] == num
+            end
+        end
+        return true
+    end
+
+
+
+
+
+
 
 end
