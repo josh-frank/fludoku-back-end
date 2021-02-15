@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'users/', to: 'users#index'
   get 'users/:id', to: 'users#show'
 
+  post 'boards/', to: 'boards#create'
   get 'boards/:id', to: 'boards#show'
 
 end
