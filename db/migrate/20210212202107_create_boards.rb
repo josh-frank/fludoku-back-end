@@ -3,9 +3,9 @@ class CreateBoards < ActiveRecord::Migration[6.1]
     create_table :boards do |t|
       t.string :board_name
       t.integer :difficulty
-      t.integer :starting_board, array: true
-      t.integer :solved_board, array: true
-      t.integer :board_in_progress, array: true
+      t.jsonb :starting_board
+      t.jsonb :solved_board
+      t.jsonb :board_in_progress
       t.boolean :solved, default: false
 
       t.timestamps

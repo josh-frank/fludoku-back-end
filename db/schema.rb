@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 2021_02_12_202230) do
   create_table "boards", force: :cascade do |t|
     t.string "board_name"
     t.integer "difficulty"
-    t.integer "starting_board", array: true
-    t.integer "solved_board", array: true
-    t.integer "board_in_progress", array: true
+    t.jsonb "starting_board"
+    t.jsonb "solved_board"
+    t.jsonb "board_in_progress"
     t.boolean "solved", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

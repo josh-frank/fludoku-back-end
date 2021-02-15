@@ -19,7 +19,7 @@ class BoardsController < ApplicationController
   private
 
   def board_params
-    params.require( :board ).permit( :board_name, :starting_board, :solved_board, :board_in_progress )
+    params.permit( :board_name, :starting_board, :solved_board, :board_in_progress )
   end
 
 end
