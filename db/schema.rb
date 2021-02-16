@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 2021_02_12_202230) do
     t.jsonb "board_in_progress"
     t.jsonb "solved_board"
     t.jsonb "removed_values"
-    t.boolean "solved", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -30,6 +29,8 @@ ActiveRecord::Schema.define(version: 2021_02_12_202230) do
   create_table "user_boards", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "board_id", null: false
+    t.boolean "solved", default: false
+    t.boolean "failed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["board_id"], name: "index_user_boards_on_board_id"
