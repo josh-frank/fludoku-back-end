@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
-  get 'board/show'
+  get '/login', to: 'users#login'
+
   get 'users', to: 'users#index'
   get 'users/:id', to: 'users#show'
   

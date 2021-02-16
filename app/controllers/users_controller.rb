@@ -10,4 +10,9 @@ class UsersController < ApplicationController
     render json: this_user
   end
 
+  def login
+    this_user = User.find_or_create_by( name: params[:name] )
+    render json: this_user
+  end
+
 end
