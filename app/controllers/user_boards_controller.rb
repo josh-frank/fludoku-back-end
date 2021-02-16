@@ -4,6 +4,11 @@ class UserBoardsController < ApplicationController
     new_user_board = UserBoard.create( user_board_params )
   end
 
+  def update
+    user_board_to_update = UserBoard.find( params[ :id ] )
+    user_board_to_update.update( user_board_params )
+  end
+
   private
 
   def user_board_params

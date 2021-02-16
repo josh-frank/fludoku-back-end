@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   get 'boards/:id', to: 'boards#show'
   
   post 'user_boards', to: 'user_boards#create'
+  patch 'user_boards/:id', to: 'user_boards#update'
 
 end
