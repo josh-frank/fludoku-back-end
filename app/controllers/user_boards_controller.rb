@@ -7,6 +7,7 @@ class UserBoardsController < ApplicationController
   def update
     user_board_to_update = UserBoard.find( params[ :id ] )
     user_board_to_update.update( user_board_params )
+    render json: user_board_to_update
   end
 
   private
