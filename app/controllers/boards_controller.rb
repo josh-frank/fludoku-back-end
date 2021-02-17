@@ -16,6 +16,11 @@ class BoardsController < ApplicationController
     render json: board
   end
 
+  def destroy
+    destroyed_board = Board.find( params[ :id ] )
+    destroyed_board.destroy()
+  end
+
   private
 
   def board_params

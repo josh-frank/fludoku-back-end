@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'boards', to: 'boards#create'
   patch 'boards/:id', to: 'boards#update'
   get 'boards/:id', to: 'boards#show'
+  delete 'boards/:id', to: 'boards#destroy'
   
   post 'user_boards', to: 'user_boards#create'
   patch 'user_boards/:id', to: 'user_boards#update'
