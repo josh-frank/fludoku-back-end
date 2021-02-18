@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'users', to: 'users#index'
   get 'users/:id', to: 'users#show'
+  patch 'users/:id', to: 'users#update'
   
   post 'boards', to: 'boards#create'
   patch 'boards/:id', to: 'boards#update'
