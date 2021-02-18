@@ -2,6 +2,7 @@ class UserBoardsController < ApplicationController
   
   def create
     new_user_board = UserBoard.create( user_board_params )
+    render json: new_user_board
   end
 
   def update
