@@ -22,7 +22,7 @@
 * [Contributing](#contributing)
   * [Known Issues](#known-issues)
   * [Contributors](#contributors)
-
+ 
 ### Introduction 
 Fludoku was written as a phase 3 project in the Flatiron School Software Engineering program as a Single-page Web-app with a Ruby on Rails API backend. The frontend Javascript interace can be found at [Fludoku-front-end](https://github.com/josh-frank/fludoku-front-end/issues) on GitHub.
 
