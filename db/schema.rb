@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 2021_02_12_202230) do
     t.jsonb "board_in_progress"
     t.jsonb "solved_board"
     t.jsonb "removed_values"
-    t.integer "timer", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -32,6 +31,7 @@ ActiveRecord::Schema.define(version: 2021_02_12_202230) do
     t.bigint "board_id", null: false
     t.boolean "solved", default: false
     t.boolean "failed", default: false
+    t.integer "timer", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["board_id"], name: "index_user_boards_on_board_id"
