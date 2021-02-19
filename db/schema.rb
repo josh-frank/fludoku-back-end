@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2021_02_12_202230) do
     t.jsonb "board_in_progress"
     t.jsonb "solved_board"
     t.jsonb "removed_values"
+    t.integer "timer", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

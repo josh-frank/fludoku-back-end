@@ -7,6 +7,7 @@ class CreateBoards < ActiveRecord::Migration[6.1]
       t.jsonb :board_in_progress
       t.jsonb :solved_board
       t.jsonb :removed_values
+      t.integer :timer, default: 0
 
       t.timestamps
     end
