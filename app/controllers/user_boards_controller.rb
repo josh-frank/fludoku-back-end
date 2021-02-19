@@ -14,7 +14,7 @@ class UserBoardsController < ApplicationController
   private
 
   def user_board_params
-    params.require( :user_board ).permit( :user_id, :board_id, :solved, :failed )
+    params.require( :user_board ).permit( :user_id, :board_id, :solved, :failed, :timer )
   end
 
 end
